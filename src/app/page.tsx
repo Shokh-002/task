@@ -79,16 +79,16 @@ export default function CaptureForm() {
             <Input onChange={(e) => setTags(e.target.value)} />
           </Form.Item>
           <Form.Item label="Бюджет от" name="budgetFrom">  
-            <InputNumber className="w-full" min={0} onChange={(value) => setBudgetFrom(typeof value === "number" ? value : 0)} />
+            <InputNumber className="w-full"  onChange={(value) => setBudgetFrom(typeof value === "number" ? value : 0)} />
           </Form.Item>
           <Form.Item label="Бюджет до" name="budgetTo">  
-            <InputNumber className="w-full" min={0} onChange={(value) => setBudgetTo(typeof value === "number" ? value : 0)} />
+            <InputNumber className="w-full"  onChange={(value) => setBudgetTo(typeof value === "number" ? value : 0)} />
           </Form.Item>
           <Form.Item label="Дедлайн (в днях)" name="deadline">  
-            <InputNumber className="w-full" min={1} onChange={(value) => setDeadline(typeof value === "number" ? value : 0)} />
+            <InputNumber className="w-full"  onChange={(value) => setDeadline(typeof value === "number" ? value : 0)} />
           </Form.Item>
           <Form.Item label="Напоминания" name="reminds">  
-            <InputNumber className="w-full" min={0} onChange={(value) => setReminds(typeof value === "number" ? value : 0)} />
+            <InputNumber className="w-full"  onChange={(value) => setReminds(typeof value === "number" ? value : 0)} />
           </Form.Item>
           <Button type="primary" htmlType="submit" className="w-full">Создать задачу</Button>
         </Form>
