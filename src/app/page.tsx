@@ -11,10 +11,10 @@ export default function CaptureForm() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [tags, setTags] = useState('');
-  const [budgetFrom, setBudgetFrom] = useState();
-  const [budgetTo, setBudgetTo] = useState();
-  const [deadline, setDeadline] = useState();
-  const [reminds, setReminds] = useState();
+  const [budgetFrom, setBudgetFrom] = useState<number>(0);
+  const [budgetTo, setBudgetTo] = useState<number>(0);
+  const [deadline, setDeadline] = useState<number>(0);
+  const [reminds, setReminds] = useState<number>(0);
 
   useEffect(() => {
     const savedToken = localStorage.getItem("task_token");
