@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import '@ant-design/v5-patch-for-react-19';
 import { useState, useEffect } from "react";
@@ -6,10 +7,10 @@ import { Form, Input, Button, InputNumber, Typography, message, Card } from "ant
 const { Title } = Typography;
 
 export default function CaptureForm() {
-  const [token, setToken] = useState("");
-  const [title, setTitle] = useState();
-  const [description, setDescription] = useState();
-  const [tags, setTags] = useState();
+  const [token, setToken] = useState('');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [tags, setTags] = useState('');
   const [budgetFrom, setBudgetFrom] = useState();
   const [budgetTo, setBudgetTo] = useState();
   const [deadline, setDeadline] = useState();
@@ -20,7 +21,7 @@ export default function CaptureForm() {
     if (savedToken) setToken(savedToken);
   }, []);
 
-  const handleSubmit = async (values) => {
+ const handleSubmit = async (values: { token: string | number | boolean; title: string | number | boolean; description: string | number | boolean; tags: string | number | boolean; budgetFrom: any; budgetTo: any; deadline: any; reminds: any; }) => {
     if (!values.token) {
       message.error("Введите токен!");
       return;
@@ -53,7 +54,7 @@ export default function CaptureForm() {
         message.error(`❌ Ошибка: ${result.error || "Неизвестная ошибка"}`);
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
       message.error("❌ Ошибка сети! Проверьте подключение.");
     }
   };
@@ -78,16 +79,16 @@ export default function CaptureForm() {
             <Input onChange={(e) => setTags(e.target.value)} />
           </Form.Item>
           <Form.Item label="Бюджет от" name="budgetFrom">  
-            <InputNumber className="w-full" min={0} onChange={(value) => setBudgetFrom(value)} />
+            <InputNumber className="w-full" min={0} onChange={(value) => setBudgetFrom(typeof value === "number" ? value : 0)} />
           </Form.Item>
           <Form.Item label="Бюджет до" name="budgetTo">  
-            <InputNumber className="w-full" min={0} onChange={(value) => setBudgetTo(value)} />
+            <InputNumber className="w-full" min={0} onChange={(value) => setBudgetTo(typeof value === "number" ? value : 0)} />
           </Form.Item>
           <Form.Item label="Дедлайн (в днях)" name="deadline">  
-            <InputNumber className="w-full" min={1} onChange={(value) => setDeadline(value)} />
+            <InputNumber className="w-full" min={1} onChange={(value) => setDeadline(typeof value === "number" ? value : 0)} />
           </Form.Item>
           <Form.Item label="Напоминания" name="reminds">  
-            <InputNumber className="w-full" min={0} onChange={(value) => setReminds(value)} />
+            <InputNumber className="w-full" min={0} onChange={(value) => setReminds(typeof value === "number" ? value : 0)} />
           </Form.Item>
           <Button type="primary" htmlType="submit" className="w-full">Создать задачу</Button>
         </Form>
