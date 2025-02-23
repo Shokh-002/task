@@ -6,7 +6,7 @@ import { Form, Input, Button, InputNumber, Typography, message, Card } from "ant
 const { Title } = Typography;
 
 export default function CaptureForm() {
-  const [token, setToken] = useState();
+  const [token, setToken] = useState("");
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
   const [tags, setTags] = useState();
@@ -53,6 +53,7 @@ export default function CaptureForm() {
         message.error(`❌ Ошибка: ${result.error || "Неизвестная ошибка"}`);
       }
     } catch (error) {
+      console.log(error)
       message.error("❌ Ошибка сети! Проверьте подключение.");
     }
   };
